@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job AI - Login e Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #338573;
+            padding: 10px 15px;
+        }
+        .navbar a:hover {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .navbar .brand {
+            font-weight: bold;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 400px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #338573;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #146453;
+        }
+        .toggle-link {
+            color: #338573;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #338573;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="brand">Job AI</a>
+        <div>
+            <a href="#" id="login-link" class="toggle-link" onclick="showLogin()">Login</a>
+            <a href="#" id="register-link" class="toggle-link" onclick="showRegister()">Cadastro</a>
+        </div>
+    </div>
+
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Senha</label>
+                <input type="password" id="login-password" name="login-password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Entrar">
+            </div>
+            <p>Não tem uma conta? <span class="toggle-link" onclick="showRegister()">Cadastre-se aqui</span></p>
+        </form>
+    </div>
+
+    <div class="container" id="register-container" style="display: none;">
+        <h2>Cadastro</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar Conta">
+            </div>
+            <p>Já tem uma conta? <span class="toggle-link" onclick="showLogin()">Faça login aqui</span></p>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Job AI. Érick Hideki Oyakawa Awata
+    </footer>
+
+    <script>
+        function showLogin() {
+            document.getElementById('login-container').style.display = 'block';
+            document.getElementById('register-container').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            alert('Login realizado com sucesso!');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const cpf = document.getElementById('cpf').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (cpf.length !== 11) {
+                alert('Por favor, insira um CPF válido com 11 dígitos.');
+                return;
+            }
+
+            alert('Cadastro realizado com sucesso!');
+        });
+    </script>
+</body>
+</html>
